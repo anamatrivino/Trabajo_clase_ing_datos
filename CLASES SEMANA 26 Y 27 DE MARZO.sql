@@ -126,3 +126,86 @@ BEGIN
 END //
 DELIMITER ;
 describe Mascota_Vacuna;
+
+/*Vistas views Esto es una consulta que se almacena en la base de datos, es una tabla virtual, 
+genera una consulta de datos en tipo de tabla, pero esta tabla no queda registrada en la base de datos.
+
+Es una consulta almacenada en la base de datos que genera una tabla virtual, solo puedo consultar lo que esta, es mejor una vista que 
+una consulta porque se simplifica el proceso*/
+
+/*Sentencia DDL*/
+CREATE VIEW vistaCliente as
+select * from Cliente where cedulaCliente=35478596;
+select * from VistaCliente;
+
+CREATE VIEW vistaTelCliente AS
+SELECT * FROM Cliente WHERE telefono LIKE '%4%' and telefono LIKE '%6%' and telefono LIKE '%7%';
+select * from VistaTelCliente;
+
+/*modificar una vista 
+alter view (nombre de la vista) as select (valoresaConsultar)
+from (nombreTabla) where (condiciones)*/
+
+/*Eliminar una vista
+drop view (nombreVista)*/
+
+/*Disparadores o triggers o desencadenador
+son objetos de la base de datos que ayudan a tener soportes de información
+tipos de disparadores; before, tiene before insert, before update, el before delete: se
+ejecutan antes de la operación
+crea un backup
+; after, tiene after insert, after update y after delete*/
+
+/*Crear un trigger para registar en una tabla consolidado cada vez
+que se inserte una mascote*/
+
+/*Create Trigger for send info to a table called consolidado when the client insert a new pet */
+create table consolidado(
+idMascota int primary key,
+nombreMascota varchar (15),
+generoMascota varchar (15),
+razaMascota varchar (15),
+cantidad int (10)
+);
+
+DELIMITER //
+CREATE TRIGGER registrarConsolidadoMascota
+AFTER INSERT ON mascota
+FOR EACH ROW
+BEGIN
+	INSERT INTO consolidado VALUES(OLD.idMascota, NEW.nombreMascota, NEW.generoMascota, NEW.razaMascota, NEW.cantidad );
+END//
+DELIMITER ;
+
+insert into Mascota Values (6, 'Sasha','M','Golden',8);
+select * from consolidado;
+
+/*Cuando el campo es autoincrementable toca colocar 'Insert'*/
+
+/*Crea un trigger de eliminado para que registre los clientes eliminados*/
+
+create table papelera(
+cedulaCliente int primary key,
+nombreCliente varchar (15),
+apellidoCliente varchar (15),
+direccionCliente varchar (10),
+telefono int (10),
+idMascotaFK int
+);
+
+DELIMITER //
+CREATE TRIGGER papeleraCliente
+BEFORE DELETE ON cliente
+FOR EACH ROW
+BEGIN
+	INSERT INTO papelera VALUES(OLD.cedulaCliente, OLD.nombreCliente, OLD.apellidoCliente, OLD.direccionCliente, OLD.telefono, OLD.idMascotaFK );
+
+END//
+DELIMITER ;
+
+Insert into cliente values(8826482,'ANA','URUR','CL 8 %637', 38842984,6);
+Delete from cliente where nombreCliente='ANA';
+
+select * from papelera;
+
+SET SQL_SAFE_UPDATES=0;
