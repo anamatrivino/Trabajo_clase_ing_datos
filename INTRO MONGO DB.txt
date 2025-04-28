@@ -1,0 +1,190 @@
+show dbs
+admin   40.00 KiB
+config  60.00 KiB
+local   80.00 KiB
+use tienda
+switched to db tienda
+db
+tienda
+db.createCollection("productos")
+{ ok: 1 }
+show collections
+productos
+db.productos.insertOne({nombre:"Laptop",precio:1200000,cantidad:10})
+{
+  acknowledged: true,
+  insertedId: ObjectId('680fce81ec516248b5295bd2')
+}
+db.productos.insertMany([{nombre:"Mouse",precio:60000,cantidad:15},{nombre:"Teclados",precio:100000,cantidad:15},{nombre:"USB",precio:20000,cantidad:5}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('680fcfe2ec516248b5295bd3'),
+    '1': ObjectId('680fcfe2ec516248b5295bd4'),
+    '2': ObjectId('680fcfe2ec516248b5295bd5')
+  }
+}
+db.productos.find
+[Function: find] AsyncFunction {
+  returnsPromise: true,
+  apiVersions: [ 1, Infinity ],
+  returnType: 'Cursor',
+  serverVersions: [ '0.0.0', '999.999.999' ],
+  topologies: [ 'ReplSet', 'Sharded', 'LoadBalanced', 'Standalone' ],
+  deprecated: false,
+  platforms: [ 'Compass', 'Browser', 'CLI' ],
+  isDirectShellCommand: false,
+  acceptsRawInput: false,
+  shellCommandCompleter: undefined,
+  help: [Function (anonymous)] Help
+}
+db.productos.find()
+{
+  _id: ObjectId('680fce81ec516248b5295bd2'),
+  nombre: 'Laptop',
+  precio: 1200000,
+  cantidad: 10
+}
+{
+  _id: ObjectId('680fcfe2ec516248b5295bd3'),
+  nombre: 'Mouse',
+  precio: 60000,
+  cantidad: 15
+}
+{
+  _id: ObjectId('680fcfe2ec516248b5295bd4'),
+  nombre: 'Teclados',
+  precio: 100000,
+  cantidad: 15
+}
+{
+  _id: ObjectId('680fcfe2ec516248b5295bd5'),
+  nombre: 'USB',
+  precio: 20000,
+  cantidad: 5
+}
+db.productos.find.pretty()
+TypeError: db.productos.find.pretty is not a function
+db.productos.find.prety()
+TypeError: db.productos.find.prety is not a function
+db.productos.find.pretty
+db.productos.find().pretty()
+{
+  _id: ObjectId('680fce81ec516248b5295bd2'),
+  nombre: 'Laptop',
+  precio: 1200000,
+  cantidad: 10
+}
+{
+  _id: ObjectId('680fcfe2ec516248b5295bd3'),
+  nombre: 'Mouse',
+  precio: 60000,
+  cantidad: 15
+}
+{
+  _id: ObjectId('680fcfe2ec516248b5295bd4'),
+  nombre: 'Teclados',
+  precio: 100000,
+  cantidad: 15
+}
+{
+  _id: ObjectId('680fcfe2ec516248b5295bd5'),
+  nombre: 'USB',
+  precio: 20000,
+  cantidad: 5
+}
+db.productos.find({precio:{$gt:20000}})
+{
+  _id: ObjectId('680fce81ec516248b5295bd2'),
+  nombre: 'Laptop',
+  precio: 1200000,
+  cantidad: 10
+}
+{
+  _id: ObjectId('680fcfe2ec516248b5295bd3'),
+  nombre: 'Mouse',
+  precio: 60000,
+  cantidad: 15
+}
+{
+  _id: ObjectId('680fcfe2ec516248b5295bd4'),
+  nombre: 'Teclados',
+  precio: 100000,
+  cantidad: 15
+}
+db.productos.find({precio:{$eq:20000}})
+{
+  _id: ObjectId('680fcfe2ec516248b5295bd5'),
+  nombre: 'USB',
+  precio: 20000,
+  cantidad: 5
+}
+db.productos.find({precio:{$gte:20000}})
+{
+  _id: ObjectId('680fce81ec516248b5295bd2'),
+  nombre: 'Laptop',
+  precio: 1200000,
+  cantidad: 10
+}
+{
+  _id: ObjectId('680fcfe2ec516248b5295bd3'),
+  nombre: 'Mouse',
+  precio: 60000,
+  cantidad: 15
+}
+{
+  _id: ObjectId('680fcfe2ec516248b5295bd4'),
+  nombre: 'Teclados',
+  precio: 100000,
+  cantidad: 15
+}
+{
+  _id: ObjectId('680fcfe2ec516248b5295bd5'),
+  nombre: 'USB',
+  precio: 20000,
+  cantidad: 5
+}
+db.productos.find({precio:{$gt:20000}})
+{
+  _id: ObjectId('680fce81ec516248b5295bd2'),
+  nombre: 'Laptop',
+  precio: 1200000,
+  cantidad: 10
+}
+{
+  _id: ObjectId('680fcfe2ec516248b5295bd3'),
+  nombre: 'Mouse',
+  precio: 60000,
+  cantidad: 15
+}
+{
+  _id: ObjectId('680fcfe2ec516248b5295bd4'),
+  nombre: 'Teclados',
+  precio: 100000,
+  cantidad: 15
+}
+db.productos.find({precio:{$lt:20000}})
+db.productos.find({precio:{$lt:20000}})
+db.productos.find({precio:{$lt:100000}})
+{
+  _id: ObjectId('680fcfe2ec516248b5295bd3'),
+  nombre: 'Mouse',
+  precio: 60000,
+  cantidad: 15
+}
+{
+  _id: ObjectId('680fcfe2ec516248b5295bd5'),
+  nombre: 'USB',
+  precio: 20000,
+  cantidad: 5
+}
+1
+1
+db.productos.find({precio:{$lte:20000}})
+{
+  _id: ObjectId('680fcfe2ec516248b5295bd5'),
+  nombre: 'USB',
+  precio: 20000,
+  cantidad: 5
+}
+db.productos.find({precio:{$ne:20000}})
