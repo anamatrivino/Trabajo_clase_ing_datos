@@ -1,0 +1,236 @@
+use tienda
+switched to db tienda
+show collections
+clientes
+productos
+db.createCollection("ventas")
+{ ok: 1 }
+show collections
+clientes
+productos
+ventas
+db.productos.find()
+{
+  _id: ObjectId('6811992293d2da1ab2f3b5ed'),
+  nombre: 'Laptop',
+  precio: 1200000,
+  cantidad: 10
+}
+{
+  _id: ObjectId('6811998793d2da1ab2f3b5ee'),
+  nombre: 'Mouse',
+  precio: 60000,
+  cantidad: 15
+}
+{
+  _id: ObjectId('6811998793d2da1ab2f3b5ef'),
+  nombre: 'Teclados',
+  precio: 100000,
+  cantidad: 15
+}
+{
+  _id: ObjectId('6811998793d2da1ab2f3b5f0'),
+  nombre: 'USB',
+  precio: 20000,
+  cantidad: 5
+}
+db.cliente.insertMany([{Nombre:"Ana",Cedula:1000077838,Celular:3013689768,Correo:"ana@gmail.com"},{Nombre:"Maria",Cedula:1011085929,Celular:3003127520,Correo:"maria@gmail.com"},{Nombre:"Nathalia",Cedula:52321233,Celular:3198765243,Correo:"natha@gmail.com"},{Nombre:"Juanpa",Cedula:54321677,Celular:320765434,Correo:"juanpa@gmail.com"},{Nombre:"Santago",Cedula:542378976,Celular:3156542896,Correo:"santiago@gmail.com"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('68126b78962c996be4d2aff4'),
+    '1': ObjectId('68126b78962c996be4d2aff5'),
+    '2': ObjectId('68126b78962c996be4d2aff6'),
+    '3': ObjectId('68126b78962c996be4d2aff7'),
+    '4': ObjectId('68126b78962c996be4d2aff8')
+  }
+}
+db.ventas.insertMany([{Fecha:"18/04/2025",Compra:"Teclados",Cantidad:3},{Fecha:"20/04/2025",Compra:"Mouse",Cantidad:1},{Fecha:"23/04/2025",Compra:"USB",Cantidad:2,},{Fecha:"25/04/2025",Compra:"Laptop",Cantidad:1},{Fecha:"27/04/2025",Compra:"Laptop",Cantidad:1}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('68126c55962c996be4d2aff9'),
+    '1': ObjectId('68126c55962c996be4d2affa'),
+    '2': ObjectId('68126c55962c996be4d2affb'),
+    '3': ObjectId('68126c55962c996be4d2affc'),
+    '4': ObjectId('68126c55962c996be4d2affd')
+  }
+}
+db.productos.insertOne({nombre:"Audifonos",precio:15000,cantidad:20})
+{
+  acknowledged: true,
+  insertedId: ObjectId('68126c9a962c996be4d2affe')
+}
+db.productos.updateOne([{nombre:"Laptop"},{$set:{precio:5000000}}])
+MongoInvalidArgumentError: Update document requires atomic operators
+db.productos.updateOne({nombre:"Laptop"},{$set:{precio:5000000}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.productos.findOne({nombre:"Laptop"})
+{
+  _id: ObjectId('6811992293d2da1ab2f3b5ed'),
+  nombre: 'Laptop',
+  precio: 5000000,
+  cantidad: 10
+}
+db.productos.updateMany({precio:{$lt:100000}},{$set:{enOferta:true}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 3,
+  upsertedCount: 0
+}
+db.productos.find()
+{
+  _id: ObjectId('6811992293d2da1ab2f3b5ed'),
+  nombre: 'Laptop',
+  precio: 5000000,
+  cantidad: 10
+}
+{
+  _id: ObjectId('6811998793d2da1ab2f3b5ee'),
+  nombre: 'Mouse',
+  precio: 60000,
+  cantidad: 15,
+  enOferta: true
+}
+{
+  _id: ObjectId('6811998793d2da1ab2f3b5ef'),
+  nombre: 'Teclados',
+  precio: 100000,
+  cantidad: 15
+}
+{
+  _id: ObjectId('6811998793d2da1ab2f3b5f0'),
+  nombre: 'USB',
+  precio: 20000,
+  cantidad: 5,
+  enOferta: true
+}
+{
+  _id: ObjectId('68126c9a962c996be4d2affe'),
+  nombre: 'Audifonos',
+  precio: 15000,
+  cantidad: 20,
+  enOferta: true
+}
+db.productos.deleteOne({nombre:"Laptop"},{precio:5000000})
+{
+  acknowledged: true,
+  deletedCount: 1
+}
+db.productos.find()
+{
+  _id: ObjectId('6811998793d2da1ab2f3b5ee'),
+  nombre: 'Mouse',
+  precio: 60000,
+  cantidad: 15,
+  enOferta: true
+}
+{
+  _id: ObjectId('6811998793d2da1ab2f3b5ef'),
+  nombre: 'Teclados',
+  precio: 100000,
+  cantidad: 15
+}
+{
+  _id: ObjectId('6811998793d2da1ab2f3b5f0'),
+  nombre: 'USB',
+  precio: 20000,
+  cantidad: 5,
+  enOferta: true
+}
+{
+  _id: ObjectId('68126c9a962c996be4d2affe'),
+  nombre: 'Audifonos',
+  precio: 15000,
+  cantidad: 20,
+  enOferta: true
+}
+db.productos.deleteOne({$and[{nombre:"USB"},{precio:20000}]})
+SyntaxError: Unexpected token, expected "," (1:28)
+
+[0m[31m[1m>[22m[39m[90m 1 |[39m db[33m.[39mproductos[33m.[39mdeleteOne({$and[{nombre[33m:[39m[32m"USB"[39m}[33m,[39m{precio[33m:[39m[35m20000[39m}]})
+ [90m   |[39m                             [31m[1m^[22m[39m[0m
+db.productos.deleteOne({$and[{nombre:"USB"}{precio:20000}]})
+SyntaxError: Unexpected token, expected "," (1:28)
+
+[0m[31m[1m>[22m[39m[90m 1 |[39m db[33m.[39mproductos[33m.[39mdeleteOne({$and[{nombre[33m:[39m[32m"USB"[39m}{precio[33m:[39m[35m20000[39m}]})
+ [90m   |[39m                             [31m[1m^[22m[39m[0m
+db.productos.deleteOne({$and:[{nombre:"USB"},{precio:20000}]})
+{
+  acknowledged: true,
+  deletedCount: 1
+}
+tienda
+
+nombre:"Audifonos",precio:15000,cantidad:20
+
+use tienda
+switched to db tienda
+show collections
+switched to db tienda
+db.createCollection("productos")
+{ ok: 1 }
+db.createCollection("ventas")
+{ ok: 1 }
+db.createCollection("clienta")
+{ ok: 1 }
+db.cliente.insertMany([{Nombre:"Ana",Cedula:1000077838,Celular:3013689768,Correo:"ana@gmail.com"},{Nombre:"Maria",Cedula:1011085929,Celular:3003127520,Correo:"maria@gmail.com"},{Nombre:"Nathalia",Cedula:52321233,Celular:3198765243,Correo:"natha@gmail.com"},{Nombre:"Juanpa",Cedula:54321677,Celular:320765434,Correo:"juanpa@gmail.com"},{Nombre:"Santago",Cedula:542378976,Celular:3156542896,Correo:"santiago@gmail.com"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6812786e4266a5f42916a550'),
+    '1': ObjectId('6812786e4266a5f42916a551'),
+    '2': ObjectId('6812786e4266a5f42916a552'),
+    '3': ObjectId('6812786e4266a5f42916a553'),
+    '4': ObjectId('6812786e4266a5f42916a554')
+  }
+}
+db.ventas.insertMany([{Fecha:"18/04/2025",Compra:"Teclados",Cantidad:3},{Fecha:"20/04/2025",Compra:"Mouse",Cantidad:1},{Fecha:"23/04/2025",Compra:"USB",Cantidad:2,},{Fecha:"25/04/2025",Compra:"Laptop",Cantidad:1},{Fecha:"27/04/2025",Compra:"Laptop",Cantidad:1}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('681278764266a5f42916a555'),
+    '1': ObjectId('681278764266a5f42916a556'),
+    '2': ObjectId('681278764266a5f42916a557'),
+    '3': ObjectId('681278764266a5f42916a558'),
+    '4': ObjectId('681278764266a5f42916a559')
+  }
+}
+db.productos.insertMany({  nombre: 'Laptop',
+  precio: 1200000,
+  cantidad: 10},{  nombre: 'Mouse',
+  precio: 60000,
+  cantidad: 15},{  nombre: 'Teclados',
+  precio: 100000,
+  cantidad: 15},{  nombre: 'USB',
+  precio: 20000,
+  cantidad: 5},{nombre:"Audifonos",precio:15000,cantidad:20})
+MongoInvalidArgumentError: Argument "docs" must be an array of documents
+db.productos.insertMany([{  nombre: 'Laptop',
+  precio: 1200000,
+  cantidad: 10},{  nombre: 'Mouse',
+  precio: 60000,
+  cantidad: 15},{  nombre: 'Teclados',
+  precio: 100000,
+  cantidad: 15},{  nombre: 'USB',
+  precio: 20000,
+  cantidad: 5},{nombre:"Audifonos",precio:15000,cantidad:20}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('681278e64266a5f42916a55a'),
+    '1': ObjectId('681278e64266a5f42916a55b'),
+    '2': ObjectId('681278e64266a5f42916a55c'),
+    '3': ObjectId('681278e64266a5f42916a55d'),
+    '4': ObjectId('681278e64266a5f42916a55e')
+  }
+}
+db.ventas.aggregate([{$lookup:{from:"productos",localField:"productoID",foreignField:"_id",as:"producto"}},{$lookup:{from:"ventas",loc
