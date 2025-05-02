@@ -1,0 +1,951 @@
+use colegio
+switched to db colegio
+db
+colegio
+db.createCollection("alumnos")
+{ ok: 1 }
+db.createCollection("materia")
+{ ok: 1 }
+db.createCollection("curso")
+{ ok: 1 }
+db.createCollection("calificaciones")
+{ ok: 1 }
+show collections
+alumnos
+calificaciones
+curso
+materia
+db.materia.drop()
+true
+show collections
+alumnos
+calificaciones
+curso
+db.createCollection("calificacion")
+{ ok: 1 }
+show collections
+alumnos
+calificacion
+calificaciones
+curso
+db.calificaciones.drop()
+true
+show collections
+alumnos
+calificacion
+curso
+db.createCollection("mencion")
+{ ok: 1 }
+show collections
+alumnos
+calificacion
+curso
+mencion
+db.mencion.drop()
+true
+dp.createCollection("materia")
+ReferenceError: dp is not defined
+db.createCollection("materia")
+{ ok: 1 }
+show collections
+alumnos
+calificacion
+curso
+materia
+dp.alumnos.insertMany([{nombre:"Ana",Apellido:"Trivino",cedula:"1000786435",fechaNac:"19-09-2003",correo:"ana@gmail.com"}])
+ReferenceError: dp is not defined
+db.alumnos.insertMany([
+  { nombre: "Ana", Apellido: "Trivino", cedula: "10210786435", fechaNac: "19-09-2003", correo: "ana@gmail.com" },
+  { nombre: "Carlos", Apellido: "Mendoza", cedula: "1324876543", fechaNac: "25-11-2002", correo: "carlos@gmail.com" },
+  { nombre: "Laura", Apellido: "Gonzalez", cedula: "1129765432", fechaNac: "12-03-2001", correo: "laura@gmail.com" },
+  { nombre: "Pedro", Apellido: "Lopez", cedula: "1000987654", fechaNac: "04-07-2000", correo: "pedro@gmail.com" },
+  { nombre: "Maria", Apellido: "Rodriguez", cedula: "1023454321", fechaNac: "18-01-2002", correo: "maria@gmail.com" }
+]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('68150454fad4251bba8f71bd'),
+    '1': ObjectId('68150454fad4251bba8f71be'),
+    '2': ObjectId('68150454fad4251bba8f71bf'),
+    '3': ObjectId('68150454fad4251bba8f71c0'),
+    '4': ObjectId('68150454fad4251bba8f71c1')
+  }
+}
+db.curso.insertMany([
+  { salon: "501", anio: "2025" },
+  { salon: "502", anio: "2025" },
+  { salon: "503", anio: "2025" },
+  { salon: "504", anio: "2025" },
+  { salon: "505", anio: "2025" }
+]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('681504f3fad4251bba8f71c2'),
+    '1': ObjectId('681504f3fad4251bba8f71c3'),
+    '2': ObjectId('681504f3fad4251bba8f71c4'),
+    '3': ObjectId('681504f3fad4251bba8f71c5'),
+    '4': ObjectId('681504f3fad4251bba8f71c6')
+  }
+}
+db.materia.insertMany([
+  { asignatura: "Matemáticas", docente: "Nikola Vargas" },
+  { asignatura: "Física", docente: "Francisco Rodriguez" },
+  { asignatura: "Química", docente: "Marie Monje" },
+  { asignatura: "Historia", docente: "Marlon Gomez" },
+  { asignatura: "Biología", docente: "Santiago Vargas" }
+]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('68150556fad4251bba8f71c7'),
+    '1': ObjectId('68150556fad4251bba8f71c8'),
+    '2': ObjectId('68150556fad4251bba8f71c9'),
+    '3': ObjectId('68150556fad4251bba8f71ca'),
+    '4': ObjectId('68150556fad4251bba8f71cb')
+  }
+}
+ 
+show collections
+alumnos
+calificacion
+curso
+materia
+
+db.alumnos.insertMany([
+  { nombre: "Jose", Apellido: "Martinez", cedula: "1034876543", fechaNac: "22-06-2001", correo: "jose@gmail.com" },
+  { nombre: "Sofia", Apellido: "Perez", cedula: "1123456789", fechaNac: "03-12-2002", correo: "sofia@gmail.com" },
+  { nombre: "Luis", Apellido: "Diaz", cedula: "1254789632", fechaNac: "15-04-2000", correo: "luis@gmail.com" },
+  { nombre: "Julia", Apellido: "Hernandez", cedula: "1357964321", fechaNac: "07-09-2001", correo: "julia@gmail.com" },
+  { nombre: "Roberto", Apellido: "Fernandez", cedula: "1456798203", fechaNac: "30-11-2001", correo: "roberto@gmail.com" },
+  { nombre: "Elena", Apellido: "Jimenez", cedula: "1543219876", fechaNac: "01-02-2003", correo: "elena@gmail.com" },
+  { nombre: "Ricardo", Apellido: "Lozano", cedula: "1623458765", fechaNac: "18-06-2000", correo: "ricardo@gmail.com" },
+  { nombre: "Paola", Apellido: "Ramirez", cedula: "1734561234", fechaNac: "20-09-2002", correo: "paola@gmail.com" },
+  { nombre: "Oscar", Apellido: "Torres", cedula: "1845674321", fechaNac: "12-05-2000", correo: "oscar@gmail.com" },
+  { nombre: "Marta", Apellido: "Castro", cedula: "1956789345", fechaNac: "28-08-2001", correo: "marta@gmail.com" },
+  { nombre: "Antonio", Apellido: "Gutierrez", cedula: "2067895432", fechaNac: "14-11-2001", correo: "antonio@gmail.com" },
+  { nombre: "Beatriz", Apellido: "Morales", cedula: "2178906543", fechaNac: "02-01-2002", correo: "beatriz@gmail.com" },
+  { nombre: "Victoria", Apellido: "Sanchez", cedula: "2291017654", fechaNac: "17-07-2000", correo: "victoria@gmail.com" },
+  { nombre: "Daniel", Apellido: "Gomez", cedula: "2312138765", fechaNac: "05-03-2002", correo: "daniel@gmail.com" },
+  { nombre: "Felipe", Apellido: "Rodriguez", cedula: "2423249876", fechaNac: "09-12-2002", correo: "felipe@gmail.com" },
+  { nombre: "Carmen", Apellido: "Suarez", cedula: "2534350987", fechaNac: "16-08-2000", correo: "carmen@gmail.com" }
+]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('681506c0fad4251bba8f71cc'),
+    '1': ObjectId('681506c0fad4251bba8f71cd'),
+    '2': ObjectId('681506c0fad4251bba8f71ce'),
+    '3': ObjectId('681506c0fad4251bba8f71cf'),
+    '4': ObjectId('681506c0fad4251bba8f71d0'),
+    '5': ObjectId('681506c0fad4251bba8f71d1'),
+    '6': ObjectId('681506c0fad4251bba8f71d2'),
+    '7': ObjectId('681506c0fad4251bba8f71d3'),
+    '8': ObjectId('681506c0fad4251bba8f71d4'),
+    '9': ObjectId('681506c0fad4251bba8f71d5'),
+    '10': ObjectId('681506c0fad4251bba8f71d6'),
+    '11': ObjectId('681506c0fad4251bba8f71d7'),
+    '12': ObjectId('681506c0fad4251bba8f71d8'),
+    '13': ObjectId('681506c0fad4251bba8f71d9'),
+    '14': ObjectId('681506c0fad4251bba8f71da'),
+    '15': ObjectId('681506c0fad4251bba8f71db')
+  }
+}
+db.alumnos.insertMany([
+  { nombre: "Javier", Apellido: "Romero", cedula: "2635462098", fechaNac: "21-10-2001", correo: "javier@gmail.com" },
+  { nombre: "Andrea", Apellido: "Vazquez", cedula: "2746573209", fechaNac: "11-05-2002", correo: "andrea@gmail.com" },
+  { nombre: "Carlos", Apellido: "Paredes", cedula: "2857684310", fechaNac: "19-01-2000", correo: "carlos.p@gmail.com" },
+  { nombre: "Gloria", Apellido: "Fernandez", cedula: "2968795421", fechaNac: "03-04-2001", correo: "gloria@gmail.com" },
+  { nombre: "Eduardo", Apellido: "Mora", cedula: "3079806532", fechaNac: "22-09-2002", correo: "eduardo@gmail.com" }
+]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('681506e3fad4251bba8f71dc'),
+    '1': ObjectId('681506e3fad4251bba8f71dd'),
+    '2': ObjectId('681506e3fad4251bba8f71de'),
+    '3': ObjectId('681506e3fad4251bba8f71df'),
+    '4': ObjectId('681506e3fad4251bba8f71e0')
+  }
+}
+dp.alumnos.find()
+ReferenceError: dp is not defined
+dp.alumnos.find()
+ReferenceError: dp is not defined
+db.alumnos.find()
+{
+  _id: ObjectId('68150454fad4251bba8f71bd'),
+  nombre: 'Ana',
+  Apellido: 'Trivino',
+  cedula: '10210786435',
+  fechaNac: '19-09-2003',
+  correo: 'ana@gmail.com'
+}
+{
+  _id: ObjectId('68150454fad4251bba8f71be'),
+  nombre: 'Carlos',
+  Apellido: 'Mendoza',
+  cedula: '1324876543',
+  fechaNac: '25-11-2002',
+  correo: 'carlos@gmail.com'
+}
+{
+  _id: ObjectId('68150454fad4251bba8f71bf'),
+  nombre: 'Laura',
+  Apellido: 'Gonzalez',
+  cedula: '1129765432',
+  fechaNac: '12-03-2001',
+  correo: 'laura@gmail.com'
+}
+{
+  _id: ObjectId('68150454fad4251bba8f71c0'),
+  nombre: 'Pedro',
+  Apellido: 'Lopez',
+  cedula: '1000987654',
+  fechaNac: '04-07-2000',
+  correo: 'pedro@gmail.com'
+}
+{
+  _id: ObjectId('68150454fad4251bba8f71c1'),
+  nombre: 'Maria',
+  Apellido: 'Rodriguez',
+  cedula: '1023454321',
+  fechaNac: '18-01-2002',
+  correo: 'maria@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71cc'),
+  nombre: 'Jose',
+  Apellido: 'Martinez',
+  cedula: '1034876543',
+  fechaNac: '22-06-2001',
+  correo: 'jose@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71cd'),
+  nombre: 'Sofia',
+  Apellido: 'Perez',
+  cedula: '1123456789',
+  fechaNac: '03-12-2002',
+  correo: 'sofia@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71ce'),
+  nombre: 'Luis',
+  Apellido: 'Diaz',
+  cedula: '1254789632',
+  fechaNac: '15-04-2000',
+  correo: 'luis@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71cf'),
+  nombre: 'Julia',
+  Apellido: 'Hernandez',
+  cedula: '1357964321',
+  fechaNac: '07-09-2001',
+  correo: 'julia@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d0'),
+  nombre: 'Roberto',
+  Apellido: 'Fernandez',
+  cedula: '1456798203',
+  fechaNac: '30-11-2001',
+  correo: 'roberto@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d1'),
+  nombre: 'Elena',
+  Apellido: 'Jimenez',
+  cedula: '1543219876',
+  fechaNac: '01-02-2003',
+  correo: 'elena@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d2'),
+  nombre: 'Ricardo',
+  Apellido: 'Lozano',
+  cedula: '1623458765',
+  fechaNac: '18-06-2000',
+  correo: 'ricardo@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d3'),
+  nombre: 'Paola',
+  Apellido: 'Ramirez',
+  cedula: '1734561234',
+  fechaNac: '20-09-2002',
+  correo: 'paola@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d4'),
+  nombre: 'Oscar',
+  Apellido: 'Torres',
+  cedula: '1845674321',
+  fechaNac: '12-05-2000',
+  correo: 'oscar@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d5'),
+  nombre: 'Marta',
+  Apellido: 'Castro',
+  cedula: '1956789345',
+  fechaNac: '28-08-2001',
+  correo: 'marta@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d6'),
+  nombre: 'Antonio',
+  Apellido: 'Gutierrez',
+  cedula: '2067895432',
+  fechaNac: '14-11-2001',
+  correo: 'antonio@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d7'),
+  nombre: 'Beatriz',
+  Apellido: 'Morales',
+  cedula: '2178906543',
+  fechaNac: '02-01-2002',
+  correo: 'beatriz@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d8'),
+  nombre: 'Victoria',
+  Apellido: 'Sanchez',
+  cedula: '2291017654',
+  fechaNac: '17-07-2000',
+  correo: 'victoria@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d9'),
+  nombre: 'Daniel',
+  Apellido: 'Gomez',
+  cedula: '2312138765',
+  fechaNac: '05-03-2002',
+  correo: 'daniel@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71da'),
+  nombre: 'Felipe',
+  Apellido: 'Rodriguez',
+  cedula: '2423249876',
+  fechaNac: '09-12-2002',
+  correo: 'felipe@gmail.com'
+}
+Type "it" for more
+db.alumnos.find()
+{
+  _id: ObjectId('68150454fad4251bba8f71bd'),
+  nombre: 'Ana',
+  Apellido: 'Trivino',
+  cedula: '10210786435',
+  fechaNac: '19-09-2003',
+  correo: 'ana@gmail.com'
+}
+{
+  _id: ObjectId('68150454fad4251bba8f71be'),
+  nombre: 'Carlos',
+  Apellido: 'Mendoza',
+  cedula: '1324876543',
+  fechaNac: '25-11-2002',
+  correo: 'carlos@gmail.com'
+}
+{
+  _id: ObjectId('68150454fad4251bba8f71bf'),
+  nombre: 'Laura',
+  Apellido: 'Gonzalez',
+  cedula: '1129765432',
+  fechaNac: '12-03-2001',
+  correo: 'laura@gmail.com'
+}
+{
+  _id: ObjectId('68150454fad4251bba8f71c0'),
+  nombre: 'Pedro',
+  Apellido: 'Lopez',
+  cedula: '1000987654',
+  fechaNac: '04-07-2000',
+  correo: 'pedro@gmail.com'
+}
+{
+  _id: ObjectId('68150454fad4251bba8f71c1'),
+  nombre: 'Maria',
+  Apellido: 'Rodriguez',
+  cedula: '1023454321',
+  fechaNac: '18-01-2002',
+  correo: 'maria@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71cc'),
+  nombre: 'Jose',
+  Apellido: 'Martinez',
+  cedula: '1034876543',
+  fechaNac: '22-06-2001',
+  correo: 'jose@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71cd'),
+  nombre: 'Sofia',
+  Apellido: 'Perez',
+  cedula: '1123456789',
+  fechaNac: '03-12-2002',
+  correo: 'sofia@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71ce'),
+  nombre: 'Luis',
+  Apellido: 'Diaz',
+  cedula: '1254789632',
+  fechaNac: '15-04-2000',
+  correo: 'luis@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71cf'),
+  nombre: 'Julia',
+  Apellido: 'Hernandez',
+  cedula: '1357964321',
+  fechaNac: '07-09-2001',
+  correo: 'julia@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d0'),
+  nombre: 'Roberto',
+  Apellido: 'Fernandez',
+  cedula: '1456798203',
+  fechaNac: '30-11-2001',
+  correo: 'roberto@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d1'),
+  nombre: 'Elena',
+  Apellido: 'Jimenez',
+  cedula: '1543219876',
+  fechaNac: '01-02-2003',
+  correo: 'elena@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d2'),
+  nombre: 'Ricardo',
+  Apellido: 'Lozano',
+  cedula: '1623458765',
+  fechaNac: '18-06-2000',
+  correo: 'ricardo@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d3'),
+  nombre: 'Paola',
+  Apellido: 'Ramirez',
+  cedula: '1734561234',
+  fechaNac: '20-09-2002',
+  correo: 'paola@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d4'),
+  nombre: 'Oscar',
+  Apellido: 'Torres',
+  cedula: '1845674321',
+  fechaNac: '12-05-2000',
+  correo: 'oscar@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d5'),
+  nombre: 'Marta',
+  Apellido: 'Castro',
+  cedula: '1956789345',
+  fechaNac: '28-08-2001',
+  correo: 'marta@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d6'),
+  nombre: 'Antonio',
+  Apellido: 'Gutierrez',
+  cedula: '2067895432',
+  fechaNac: '14-11-2001',
+  correo: 'antonio@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d7'),
+  nombre: 'Beatriz',
+  Apellido: 'Morales',
+  cedula: '2178906543',
+  fechaNac: '02-01-2002',
+  correo: 'beatriz@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d8'),
+  nombre: 'Victoria',
+  Apellido: 'Sanchez',
+  cedula: '2291017654',
+  fechaNac: '17-07-2000',
+  correo: 'victoria@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d9'),
+  nombre: 'Daniel',
+  Apellido: 'Gomez',
+  cedula: '2312138765',
+  fechaNac: '05-03-2002',
+  correo: 'daniel@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71da'),
+  nombre: 'Felipe',
+  Apellido: 'Rodriguez',
+  cedula: '2423249876',
+  fechaNac: '09-12-2002',
+  correo: 'felipe@gmail.com'
+}
+Type "it" for more
+db.calificacion.insertMany([
+  { idAlumno: ObjectId('68150454fad4251bba8f71bd'), idCurso: ObjectId('681504f3fad4251bba8f71c2'), idMateria: ObjectId('68150556fad4251bba8f71c7'), calificacion: "Sobresaliente" },
+  { idAlumno: ObjectId('68150454fad4251bba8f71be'), idCurso: ObjectId('681504f3fad4251bba8f71c2'), idMateria: ObjectId('68150556fad4251bba8f71c8'), calificacion: "Excelente" },
+  { idAlumno: ObjectId('68150454fad4251bba8f71bf'), idCurso: ObjectId('681504f3fad4251bba8f71c2'), idMateria: ObjectId('68150556fad4251bba8f71c9'), calificacion: "Aceptable" },
+  { idAlumno: ObjectId('68150454fad4251bba8f71c0'), idCurso: ObjectId('681504f3fad4251bba8f71c2'), idMateria: ObjectId('68150556fad4251bba8f71ca'), calificacion: "Insuficiente" },
+  { idAlumno: ObjectId('68150454fad4251bba8f71c1'), idCurso: ObjectId('681504f3fad4251bba8f71c2'), idMateria: ObjectId('68150556fad4251bba8f71cb'), calificacion: "Sobresaliente" },
+
+  { idAlumno: ObjectId('681506c0fad4251bba8f71cc'), idCurso: ObjectId('681504f3fad4251bba8f71c3'), idMateria: ObjectId('68150556fad4251bba8f71c7'), calificacion: "Excelente" },
+  { idAlumno: ObjectId('681506c0fad4251bba8f71cd'), idCurso: ObjectId('681504f3fad4251bba8f71c3'), idMateria: ObjectId('68150556fad4251bba8f71c8'), calificacion: "Aceptable" },
+  { idAlumno: ObjectId('681506c0fad4251bba8f71ce'), idCurso: ObjectId('681504f3fad4251bba8f71c3'), idMateria: ObjectId('68150556fad4251bba8f71c9'), calificacion: "Sobresaliente" },
+  { idAlumno: ObjectId('681506c0fad4251bba8f71cf'), idCurso: ObjectId('681504f3fad4251bba8f71c3'), idMateria: ObjectId('68150556fad4251bba8f71ca'), calificacion: "Insuficiente" },
+  { idAlumno: ObjectId('681506c0fad4251bba8f71d0'), idCurso: ObjectId('681504f3fad4251bba8f71c3'), idMateria: ObjectId('68150556fad4251bba8f71cb'), calificacion: "Excelente" },
+
+  { idAlumno: ObjectId('681506c0fad4251bba8f71d1'), idCurso: ObjectId('681504f3fad4251bba8f71c4'), idMateria: ObjectId('68150556fad4251bba8f71c7'), calificacion: "Insuficiente" },
+  { idAlumno: ObjectId('681506c0fad4251bba8f71d2'), idCurso: ObjectId('681504f3fad4251bba8f71c4'), idMateria: ObjectId('68150556fad4251bba8f71c8'), calificacion: "Sobresaliente" },
+  { idAlumno: ObjectId('681506c0fad4251bba8f71d3'), idCurso: ObjectId('681504f3fad4251bba8f71c4'), idMateria: ObjectId('68150556fad4251bba8f71c9'), calificacion: "Excelente" },
+  { idAlumno: ObjectId('681506c0fad4251bba8f71d4'), idCurso: ObjectId('681504f3fad4251bba8f71c4'), idMateria: ObjectId('68150556fad4251bba8f71ca'), calificacion: "Aceptable" },
+  { idAlumno: ObjectId('681506c0fad4251bba8f71d5'), idCurso: ObjectId('681504f3fad4251bba8f71c4'), idMateria: ObjectId('68150556fad4251bba8f71cb'), calificacion: "Sobresaliente" },
+
+  { idAlumno: ObjectId('681506c0fad4251bba8f71d6'), idCurso: ObjectId('681504f3fad4251bba8f71c5'), idMateria: ObjectId('68150556fad4251bba8f71c7'), calificacion: "Aceptable" },
+  { idAlumno: ObjectId('681506c0fad4251bba8f71d7'), idCurso: ObjectId('681504f3fad4251bba8f71c5'), idMateria: ObjectId('68150556fad4251bba8f71c8'), calificacion: "Insuficiente" },
+  { idAlumno: ObjectId('681506c0fad4251bba8f71d8'), idCurso: ObjectId('681504f3fad4251bba8f71c5'), idMateria: ObjectId('68150556fad4251bba8f71c9'), calificacion: "Sobresaliente" },
+  { idAlumno: ObjectId('681506c0fad4251bba8f71d9'), idCurso: ObjectId('681504f3fad4251bba8f71c5'), idMateria: ObjectId('68150556fad4251bba8f71ca'), calificacion: "Insuficiente" },
+  { idAlumno: ObjectId('681506c0fad4251bba8f71da'), idCurso: ObjectId('681504f3fad4251bba8f71c5'), idMateria: ObjectId('68150556fad4251bba8f71cb'), calificacion: "Excelente" },
+
+  { idAlumno: ObjectId('68150454fad4251bba8f71dc'), idCurso: ObjectId('681504f3fad4251bba8f71c6'), idMateria: ObjectId('68150556fad4251bba8f71c7'), calificacion: "Excelente" },
+  { idAlumno: ObjectId('68150454fad4251bba8f71dd'), idCurso: ObjectId('681504f3fad4251bba8f71c6'), idMateria: ObjectId('68150556fad4251bba8f71c8'), calificacion: "Aceptable" },
+  { idAlumno: ObjectId('68150454fad4251bba8f71de'), idCurso: ObjectId('681504f3fad4251bba8f71c6'), idMateria: ObjectId('68150556fad4251bba8f71c9'), calificacion: "Insuficiente" },
+  { idAlumno: ObjectId('68150454fad4251bba8f71df'), idCurso: ObjectId('681504f3fad4251bba8f71c6'), idMateria: ObjectId('68150556fad4251bba8f71ca'), calificacion: "Sobresaliente" },
+  { idAlumno: ObjectId('68150454fad4251bba8f71eo'), idCurso: ObjectId('681504f3fad4251bba8f71c6'), idMateria: ObjectId('68150556fad4251bba8f71cb'), calificacion: "Excelente" }
+]);
+BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+db.calificacion.insertMany([
+  { idAlumno: ObjectId('68150454fad4251bba8f71bd'), idCurso: ObjectId('681504f3fad4251bba8f71c2'), idMateria: ObjectId('68150556fad4251bba8f71c7'), calificacion: "Sobresaliente" },
+  { idAlumno: ObjectId('68150454fad4251bba8f71be'), idCurso: ObjectId('681504f3fad4251bba8f71c2'), idMateria: ObjectId('68150556fad4251bba8f71c8'), calificacion: "Excelente" },
+  { idAlumno: ObjectId('68150454fad4251bba8f71bf'), idCurso: ObjectId('681504f3fad4251bba8f71c2'), idMateria: ObjectId('68150556fad4251bba8f71c9'), calificacion: "Aceptable" },
+  { idAlumno: ObjectId('68150454fad4251bba8f71c0'), idCurso: ObjectId('681504f3fad4251bba8f71c2'), idMateria: ObjectId('68150556fad4251bba8f71ca'), calificacion: "Insuficiente" },
+  { idAlumno: ObjectId('68150454fad4251bba8f71c1'), idCurso: ObjectId('681504f3fad4251bba8f71c2'), idMateria: ObjectId('68150556fad4251bba8f71cb'), calificacion: "Sobresaliente" },
+SyntaxError: Unexpected token (7:0)
+
+[0m [90m 5 |[39m   { idAlumno[33m:[39m [33mObjectId[39m([32m'68150454fad4251bba8f71c0'[39m)[33m,[39m idCurso[33m:[39m [33mObjectId[39m([32m'681504f3fad4251bba8f71c2'[39m)[33m,[39m idMateria[33m:[39m [33mObjectId[39m([32m'68150556fad4251bba8f71ca'[39m)[33m,[39m calificacion[33m:[39m [32m"Insuficiente"[39m }[33m,[39m
+ [90m 6 |[39m   { idAlumno[33m:[39m [33mObjectId[39m([32m'68150454fad4251bba8f71c1'[39m)[33m,[39m idCurso[33m:[39m [33mObjectId[39m([32m'681504f3fad4251bba8f71c2'[39m)[33m,[39m idMateria[33m:[39m [33mObjectId[39m([32m'68150556fad4251bba8f71cb'[39m)[33m,[39m calificacion[33m:[39m [32m"Sobresaliente"[39m }[33m,[39m
+[31m[1m>[22m[39m[90m 7 |[39m
+ [90m   |[39m [31m[1m^[22m[39m[0m
+
+db.calificacion.insertMany([
+  { idAlumno: ObjectId('68150454fad4251bba8f71bd'), idCurso: ObjectId('681504f3fad4251bba8f71c2'), idMateria: ObjectId('68150556fad4251bba8f71c7'), calificacion: "Sobresaliente" },
+  { idAlumno: ObjectId('68150454fad4251bba8f71be'), idCurso: ObjectId('681504f3fad4251bba8f71c2'), idMateria: ObjectId('68150556fad4251bba8f71c8'), calificacion: "Excelente" },
+  { idAlumno: ObjectId('68150454fad4251bba8f71bf'), idCurso: ObjectId('681504f3fad4251bba8f71c2'), idMateria: ObjectId('68150556fad4251bba8f71c9'), calificacion: "Aceptable" },
+  { idAlumno: ObjectId('68150454fad4251bba8f71c0'), idCurso: ObjectId('681504f3fad4251bba8f71c2'), idMateria: ObjectId('68150556fad4251bba8f71ca'), calificacion: "Insuficiente" },
+  { idAlumno: ObjectId('68150454fad4251bba8f71c1'), idCurso: ObjectId('681504f3fad4251bba8f71c2'), idMateria: ObjectId('68150556fad4251bba8f71cb'), calificacion: "Sobresaliente" }])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('681508fcfad4251bba8f71e1'),
+    '1': ObjectId('681508fcfad4251bba8f71e2'),
+    '2': ObjectId('681508fcfad4251bba8f71e3'),
+    '3': ObjectId('681508fcfad4251bba8f71e4'),
+    '4': ObjectId('681508fcfad4251bba8f71e5')
+  }
+}
+db.calificacion.insertMany([
+  { idAlumno: ObjectId('681506c0fad4251bba8f71cc'), idCurso: ObjectId('681504f3fad4251bba8f71c3'), idMateria: ObjectId('68150556fad4251bba8f71c7'), calificacion: "Excelente" },
+  { idAlumno: ObjectId('681506c0fad4251bba8f71cd'), idCurso: ObjectId('681504f3fad4251bba8f71c3'), idMateria: ObjectId('68150556fad4251bba8f71c8'), calificacion: "Aceptable" },
+  { idAlumno: ObjectId('681506c0fad4251bba8f71ce'), idCurso: ObjectId('681504f3fad4251bba8f71c3'), idMateria: ObjectId('68150556fad4251bba8f71c9'), calificacion: "Sobresaliente" },
+  { idAlumno: ObjectId('681506c0fad4251bba8f71cf'), idCurso: ObjectId('681504f3fad4251bba8f71c3'), idMateria: ObjectId('68150556fad4251bba8f71ca'), calificacion: "Insuficiente" },
+  { idAlumno: ObjectId('681506c0fad4251bba8f71d0'), idCurso: ObjectId('681504f3fad4251bba8f71c3'), idMateria: ObjectId('68150556fad4251bba8f71cb'), calificacion: "Excelente" },
+
+  { idAlumno: ObjectId('681506c0fad4251bba8f71d1'), idCurso: ObjectId('681504f3fad4251bba8f71c4'), idMateria: ObjectId('68150556fad4251bba8f71c7'), calificacion: "Insuficiente" },
+  { idAlumno: ObjectId('681506c0fad4251bba8f71d2'), idCurso: ObjectId('681504f3fad4251bba8f71c4'), idMateria: ObjectId('68150556fad4251bba8f71c8'), calificacion: "Sobresaliente" },
+  { idAlumno: ObjectId('681506c0fad4251bba8f71d3'), idCurso: ObjectId('681504f3fad4251bba8f71c4'), idMateria: ObjectId('68150556fad4251bba8f71c9'), calificacion: "Excelente" },
+  { idAlumno: ObjectId('681506c0fad4251bba8f71d4'), idCurso: ObjectId('681504f3fad4251bba8f71c4'), idMateria: ObjectId('68150556fad4251bba8f71ca'), calificacion: "Aceptable" },
+  { idAlumno: ObjectId('681506c0fad4251bba8f71d5'), idCurso: ObjectId('681504f3fad4251bba8f71c4'), idMateria: ObjectId('68150556fad4251bba8f71cb'), calificacion: "Sobresaliente" },
+
+  { idAlumno: ObjectId('681506c0fad4251bba8f71d6'), idCurso: ObjectId('681504f3fad4251bba8f71c5'), idMateria: ObjectId('68150556fad4251bba8f71c7'), calificacion: "Aceptable" },
+  { idAlumno: ObjectId('681506c0fad4251bba8f71d7'), idCurso: ObjectId('681504f3fad4251bba8f71c5'), idMateria: ObjectId('68150556fad4251bba8f71c8'), calificacion: "Insuficiente" },
+  { idAlumno: ObjectId('681506c0fad4251bba8f71d8'), idCurso: ObjectId('681504f3fad4251bba8f71c5'), idMateria: ObjectId('68150556fad4251bba8f71c9'), calificacion: "Sobresaliente" },
+  { idAlumno: ObjectId('681506c0fad4251bba8f71d9'), idCurso: ObjectId('681504f3fad4251bba8f71c5'), idMateria: ObjectId('68150556fad4251bba8f71ca'), calificacion: "Insuficiente" },
+  { idAlumno: ObjectId('681506c0fad4251bba8f71da'), idCurso: ObjectId('681504f3fad4251bba8f71c5'), idMateria: ObjectId('68150556fad4251bba8f71cb'), calificacion: "Excelente" },
+
+]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6815091bfad4251bba8f71e6'),
+    '1': ObjectId('6815091bfad4251bba8f71e7'),
+    '2': ObjectId('6815091bfad4251bba8f71e8'),
+    '3': ObjectId('6815091bfad4251bba8f71e9'),
+    '4': ObjectId('6815091bfad4251bba8f71ea'),
+    '5': ObjectId('6815091bfad4251bba8f71eb'),
+    '6': ObjectId('6815091bfad4251bba8f71ec'),
+    '7': ObjectId('6815091bfad4251bba8f71ed'),
+    '8': ObjectId('6815091bfad4251bba8f71ee'),
+    '9': ObjectId('6815091bfad4251bba8f71ef'),
+    '10': ObjectId('6815091bfad4251bba8f71f0'),
+    '11': ObjectId('6815091bfad4251bba8f71f1'),
+    '12': ObjectId('6815091bfad4251bba8f71f2'),
+    '13': ObjectId('6815091bfad4251bba8f71f3'),
+    '14': ObjectId('6815091bfad4251bba8f71f4')
+  }
+}
+db.alumnos.insertMany([
+  { nombre: "Javier", Apellido: "Romero", cedula: "2635462098", fechaNac: "21-10-2001", correo: "javier@gmail.com" },
+  { nombre: "Andrea", Apellido: "Vazquez", cedula: "2746573209", fechaNac: "11-05-2002", correo: "andrea@gmail.com" },
+  { nombre: "Carlos", Apellido: "Paredes", cedula: "2857684310", fechaNac: "19-01-2000", correo: "carlos.p@gmail.com" },
+  { nombre: "Gloria", Apellido: "Fernandez", cedula: "2968795421", fechaNac: "03-04-2001", correo: "gloria@gmail.com" },
+  { nombre: "Eduardo", Apellido: "Mora", cedula: "3079806532", fechaNac: "22-09-2002", correo: "eduardo@gmail.com" }
+]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('68150936fad4251bba8f71f5'),
+    '1': ObjectId('68150936fad4251bba8f71f6'),
+    '2': ObjectId('68150936fad4251bba8f71f7'),
+    '3': ObjectId('68150936fad4251bba8f71f8'),
+    '4': ObjectId('68150936fad4251bba8f71f9')
+  }
+}
+db.calificacion.insertMany([
+  { idAlumno: ObjectId('68150936fad4251bba8f71f5'), idCurso: ObjectId('681504f3fad4251bba8f71c6'), idMateria: ObjectId('68150556fad4251bba8f71c7'), calificacion: "Excelente" },
+  { idAlumno: ObjectId('68150936fad4251bba8f71f6'), idCurso: ObjectId('681504f3fad4251bba8f71c6'), idMateria: ObjectId('68150556fad4251bba8f71c8'), calificacion: "Aceptable" },
+  { idAlumno: ObjectId('68150936fad4251bba8f71f7'), idCurso: ObjectId('681504f3fad4251bba8f71c6'), idMateria: ObjectId('68150556fad4251bba8f71c9'), calificacion: "Insuficiente" },
+  { idAlumno: ObjectId('68150936fad4251bba8f71f8'), idCurso: ObjectId('681504f3fad4251bba8f71c6'), idMateria: ObjectId('68150556fad4251bba8f71ca'), calificacion: "Sobresaliente" },
+  { idAlumno: ObjectId('68150936fad4251bba8f71f9'), idCurso: ObjectId('681504f3fad4251bba8f71c6'), idMateria: ObjectId('68150556fad4251bba8f71cb'), calificacion: "Excelente" }
+]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('68150974fad4251bba8f71fa'),
+    '1': ObjectId('68150974fad4251bba8f71fb'),
+    '2': ObjectId('68150974fad4251bba8f71fc'),
+    '3': ObjectId('68150974fad4251bba8f71fd'),
+    '4': ObjectId('68150974fad4251bba8f71fe')
+  }
+}
+db.calificacion.find()
+{
+  _id: ObjectId('681508fcfad4251bba8f71e1'),
+  idAlumno: ObjectId('68150454fad4251bba8f71bd'),
+  idCurso: ObjectId('681504f3fad4251bba8f71c2'),
+  idMateria: ObjectId('68150556fad4251bba8f71c7'),
+  calificacion: 'Sobresaliente'
+}
+{
+  _id: ObjectId('681508fcfad4251bba8f71e2'),
+  idAlumno: ObjectId('68150454fad4251bba8f71be'),
+  idCurso: ObjectId('681504f3fad4251bba8f71c2'),
+  idMateria: ObjectId('68150556fad4251bba8f71c8'),
+  calificacion: 'Excelente'
+}
+{
+  _id: ObjectId('681508fcfad4251bba8f71e3'),
+  idAlumno: ObjectId('68150454fad4251bba8f71bf'),
+  idCurso: ObjectId('681504f3fad4251bba8f71c2'),
+  idMateria: ObjectId('68150556fad4251bba8f71c9'),
+  calificacion: 'Aceptable'
+}
+{
+  _id: ObjectId('681508fcfad4251bba8f71e4'),
+  idAlumno: ObjectId('68150454fad4251bba8f71c0'),
+  idCurso: ObjectId('681504f3fad4251bba8f71c2'),
+  idMateria: ObjectId('68150556fad4251bba8f71ca'),
+  calificacion: 'Insuficiente'
+}
+{
+  _id: ObjectId('681508fcfad4251bba8f71e5'),
+  idAlumno: ObjectId('68150454fad4251bba8f71c1'),
+  idCurso: ObjectId('681504f3fad4251bba8f71c2'),
+  idMateria: ObjectId('68150556fad4251bba8f71cb'),
+  calificacion: 'Sobresaliente'
+}
+{
+  _id: ObjectId('6815091bfad4251bba8f71e6'),
+  idAlumno: ObjectId('681506c0fad4251bba8f71cc'),
+  idCurso: ObjectId('681504f3fad4251bba8f71c3'),
+  idMateria: ObjectId('68150556fad4251bba8f71c7'),
+  calificacion: 'Excelente'
+}
+{
+  _id: ObjectId('6815091bfad4251bba8f71e7'),
+  idAlumno: ObjectId('681506c0fad4251bba8f71cd'),
+  idCurso: ObjectId('681504f3fad4251bba8f71c3'),
+  idMateria: ObjectId('68150556fad4251bba8f71c8'),
+  calificacion: 'Aceptable'
+}
+{
+  _id: ObjectId('6815091bfad4251bba8f71e8'),
+  idAlumno: ObjectId('681506c0fad4251bba8f71ce'),
+  idCurso: ObjectId('681504f3fad4251bba8f71c3'),
+  idMateria: ObjectId('68150556fad4251bba8f71c9'),
+  calificacion: 'Sobresaliente'
+}
+{
+  _id: ObjectId('6815091bfad4251bba8f71e9'),
+  idAlumno: ObjectId('681506c0fad4251bba8f71cf'),
+  idCurso: ObjectId('681504f3fad4251bba8f71c3'),
+  idMateria: ObjectId('68150556fad4251bba8f71ca'),
+  calificacion: 'Insuficiente'
+}
+{
+  _id: ObjectId('6815091bfad4251bba8f71ea'),
+  idAlumno: ObjectId('681506c0fad4251bba8f71d0'),
+  idCurso: ObjectId('681504f3fad4251bba8f71c3'),
+  idMateria: ObjectId('68150556fad4251bba8f71cb'),
+  calificacion: 'Excelente'
+}
+{
+  _id: ObjectId('6815091bfad4251bba8f71eb'),
+  idAlumno: ObjectId('681506c0fad4251bba8f71d1'),
+  idCurso: ObjectId('681504f3fad4251bba8f71c4'),
+  idMateria: ObjectId('68150556fad4251bba8f71c7'),
+  calificacion: 'Insuficiente'
+}
+{
+  _id: ObjectId('6815091bfad4251bba8f71ec'),
+  idAlumno: ObjectId('681506c0fad4251bba8f71d2'),
+  idCurso: ObjectId('681504f3fad4251bba8f71c4'),
+  idMateria: ObjectId('68150556fad4251bba8f71c8'),
+  calificacion: 'Sobresaliente'
+}
+{
+  _id: ObjectId('6815091bfad4251bba8f71ed'),
+  idAlumno: ObjectId('681506c0fad4251bba8f71d3'),
+  idCurso: ObjectId('681504f3fad4251bba8f71c4'),
+  idMateria: ObjectId('68150556fad4251bba8f71c9'),
+  calificacion: 'Excelente'
+}
+{
+  _id: ObjectId('6815091bfad4251bba8f71ee'),
+  idAlumno: ObjectId('681506c0fad4251bba8f71d4'),
+  idCurso: ObjectId('681504f3fad4251bba8f71c4'),
+  idMateria: ObjectId('68150556fad4251bba8f71ca'),
+  calificacion: 'Aceptable'
+}
+{
+  _id: ObjectId('6815091bfad4251bba8f71ef'),
+  idAlumno: ObjectId('681506c0fad4251bba8f71d5'),
+  idCurso: ObjectId('681504f3fad4251bba8f71c4'),
+  idMateria: ObjectId('68150556fad4251bba8f71cb'),
+  calificacion: 'Sobresaliente'
+}
+{
+  _id: ObjectId('6815091bfad4251bba8f71f0'),
+  idAlumno: ObjectId('681506c0fad4251bba8f71d6'),
+  idCurso: ObjectId('681504f3fad4251bba8f71c5'),
+  idMateria: ObjectId('68150556fad4251bba8f71c7'),
+  calificacion: 'Aceptable'
+}
+{
+  _id: ObjectId('6815091bfad4251bba8f71f1'),
+  idAlumno: ObjectId('681506c0fad4251bba8f71d7'),
+  idCurso: ObjectId('681504f3fad4251bba8f71c5'),
+  idMateria: ObjectId('68150556fad4251bba8f71c8'),
+  calificacion: 'Insuficiente'
+}
+{
+  _id: ObjectId('6815091bfad4251bba8f71f2'),
+  idAlumno: ObjectId('681506c0fad4251bba8f71d8'),
+  idCurso: ObjectId('681504f3fad4251bba8f71c5'),
+  idMateria: ObjectId('68150556fad4251bba8f71c9'),
+  calificacion: 'Sobresaliente'
+}
+{
+  _id: ObjectId('6815091bfad4251bba8f71f3'),
+  idAlumno: ObjectId('681506c0fad4251bba8f71d9'),
+  idCurso: ObjectId('681504f3fad4251bba8f71c5'),
+  idMateria: ObjectId('68150556fad4251bba8f71ca'),
+  calificacion: 'Insuficiente'
+}
+{
+  _id: ObjectId('6815091bfad4251bba8f71f4'),
+  idAlumno: ObjectId('681506c0fad4251bba8f71da'),
+  idCurso: ObjectId('681504f3fad4251bba8f71c5'),
+  idMateria: ObjectId('68150556fad4251bba8f71cb'),
+  calificacion: 'Excelente'
+}
+Type "it" for more
+db.alumnos.find()
+{
+  _id: ObjectId('68150454fad4251bba8f71bd'),
+  nombre: 'Ana',
+  Apellido: 'Trivino',
+  cedula: '10210786435',
+  fechaNac: '19-09-2003',
+  correo: 'ana@gmail.com'
+}
+{
+  _id: ObjectId('68150454fad4251bba8f71be'),
+  nombre: 'Carlos',
+  Apellido: 'Mendoza',
+  cedula: '1324876543',
+  fechaNac: '25-11-2002',
+  correo: 'carlos@gmail.com'
+}
+{
+  _id: ObjectId('68150454fad4251bba8f71bf'),
+  nombre: 'Laura',
+  Apellido: 'Gonzalez',
+  cedula: '1129765432',
+  fechaNac: '12-03-2001',
+  correo: 'laura@gmail.com'
+}
+{
+  _id: ObjectId('68150454fad4251bba8f71c0'),
+  nombre: 'Pedro',
+  Apellido: 'Lopez',
+  cedula: '1000987654',
+  fechaNac: '04-07-2000',
+  correo: 'pedro@gmail.com'
+}
+{
+  _id: ObjectId('68150454fad4251bba8f71c1'),
+  nombre: 'Maria',
+  Apellido: 'Rodriguez',
+  cedula: '1023454321',
+  fechaNac: '18-01-2002',
+  correo: 'maria@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71cc'),
+  nombre: 'Jose',
+  Apellido: 'Martinez',
+  cedula: '1034876543',
+  fechaNac: '22-06-2001',
+  correo: 'jose@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71cd'),
+  nombre: 'Sofia',
+  Apellido: 'Perez',
+  cedula: '1123456789',
+  fechaNac: '03-12-2002',
+  correo: 'sofia@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71ce'),
+  nombre: 'Luis',
+  Apellido: 'Diaz',
+  cedula: '1254789632',
+  fechaNac: '15-04-2000',
+  correo: 'luis@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71cf'),
+  nombre: 'Julia',
+  Apellido: 'Hernandez',
+  cedula: '1357964321',
+  fechaNac: '07-09-2001',
+  correo: 'julia@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d0'),
+  nombre: 'Roberto',
+  Apellido: 'Fernandez',
+  cedula: '1456798203',
+  fechaNac: '30-11-2001',
+  correo: 'roberto@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d1'),
+  nombre: 'Elena',
+  Apellido: 'Jimenez',
+  cedula: '1543219876',
+  fechaNac: '01-02-2003',
+  correo: 'elena@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d2'),
+  nombre: 'Ricardo',
+  Apellido: 'Lozano',
+  cedula: '1623458765',
+  fechaNac: '18-06-2000',
+  correo: 'ricardo@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d3'),
+  nombre: 'Paola',
+  Apellido: 'Ramirez',
+  cedula: '1734561234',
+  fechaNac: '20-09-2002',
+  correo: 'paola@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d4'),
+  nombre: 'Oscar',
+  Apellido: 'Torres',
+  cedula: '1845674321',
+  fechaNac: '12-05-2000',
+  correo: 'oscar@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d5'),
+  nombre: 'Marta',
+  Apellido: 'Castro',
+  cedula: '1956789345',
+  fechaNac: '28-08-2001',
+  correo: 'marta@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d6'),
+  nombre: 'Antonio',
+  Apellido: 'Gutierrez',
+  cedula: '2067895432',
+  fechaNac: '14-11-2001',
+  correo: 'antonio@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d7'),
+  nombre: 'Beatriz',
+  Apellido: 'Morales',
+  cedula: '2178906543',
+  fechaNac: '02-01-2002',
+  correo: 'beatriz@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d8'),
+  nombre: 'Victoria',
+  Apellido: 'Sanchez',
+  cedula: '2291017654',
+  fechaNac: '17-07-2000',
+  correo: 'victoria@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71d9'),
+  nombre: 'Daniel',
+  Apellido: 'Gomez',
+  cedula: '2312138765',
+  fechaNac: '05-03-2002',
+  correo: 'daniel@gmail.com'
+}
+{
+  _id: ObjectId('681506c0fad4251bba8f71da'),
+  nombre: 'Felipe',
+  Apellido: 'Rodriguez',
+  cedula: '2423249876',
+  fechaNac: '09-12-2002',
+  correo: 'felipe@gmail.com'
+}
+Type "it" for more
+db.alumnos.findOneAndDelete(ObjectId('681506e3fad4251bba8f71dc'))
+MongoServerError[TypeMismatch]: BSON field 'findAndModify.query' is the wrong type 'objectId', expected type 'object'
+db.alumnos.findOneAndDelete($eq:ObjectId('681506e3fad4251bba8f71dc'))
+SyntaxError: Unexpected token, expected "," (1:31)
+
+[0m[31m[1m>[22m[39m[90m 1 |[39m db[33m.[39malumnos[33m.[39mfindOneAndDelete($eq[33m:[39m[33mObjectId[39m([32m'681506e3fad4251bba8f71dc'[39m))
+ [90m   |[39m                                [31m[1m^[22m[39m[0m
+show collections
+alumnos
+calificacion
+curso
+materia
+colegio
+
