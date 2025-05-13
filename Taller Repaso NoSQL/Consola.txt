@@ -1,0 +1,239 @@
+use tallerMongoDBShell
+switched to db tallerMongoDBShell
+db.createCollection('Usuarios')
+{ ok: 1 }
+db.Usuarios.insertMany([{nombre:"Juan Pérez",edad:30,correo:"juan.perez@urosario.com"},{nombre:"Ana López",edad:25,correo:"ana.lopez@gmail.com"},{nombre:"Luis Torres",edad:35,correo:"luis.torres@urosario.com"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('682291ad936992cbb6a985ce'),
+    '1': ObjectId('682291ad936992cbb6a985cf'),
+    '2': ObjectId('682291ad936992cbb6a985d0')
+  }
+}
+db.Usuarios.find()
+{
+  _id: ObjectId('682291ad936992cbb6a985ce'),
+  nombre: 'Juan Pérez',
+  edad: 30,
+  correo: 'juan.perez@urosario.com'
+}
+{
+  _id: ObjectId('682291ad936992cbb6a985cf'),
+  nombre: 'Ana López',
+  edad: 25,
+  correo: 'ana.lopez@gmail.com'
+}
+{
+  _id: ObjectId('682291ad936992cbb6a985d0'),
+  nombre: 'Luis Torres',
+  edad: 35,
+  correo: 'luis.torres@urosario.com'
+}
+db.Usuarios.find({nombre:"Ana López"})
+{
+  _id: ObjectId('682291ad936992cbb6a985cf'),
+  nombre: 'Ana López',
+  edad: 25,
+  correo: 'ana.lopez@gmail.com'
+}
+db.Usuarios.find({edad:{$gte:30}})
+{
+  _id: ObjectId('682291ad936992cbb6a985ce'),
+  nombre: 'Juan Pérez',
+  edad: 30,
+  correo: 'juan.perez@urosario.com'
+}
+{
+  _id: ObjectId('682291ad936992cbb6a985d0'),
+  nombre: 'Luis Torres',
+  edad: 35,
+  correo: 'luis.torres@urosario.com'
+}
+db.Usuarios.updateOne({nombre:"Juan Pérez"},{$set:{edad:31}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.Usuarios.find({nombre:"Juan Pérez"})
+{
+  _id: ObjectId('682291ad936992cbb6a985ce'),
+  nombre: 'Juan Pérez',
+  edad: 31,
+  correo: 'juan.perez@urosario.com'
+}
+db.Usuarios.updateMany({edad:{$gte:30}},{$set:{activo:true}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+db.Usuarios.find({edad:{$gte:30}})
+{
+  _id: ObjectId('682291ad936992cbb6a985ce'),
+  nombre: 'Juan Pérez',
+  edad: 31,
+  correo: 'juan.perez@urosario.com',
+  activo: true
+}
+{
+  _id: ObjectId('682291ad936992cbb6a985d0'),
+  nombre: 'Luis Torres',
+  edad: 35,
+  correo: 'luis.torres@urosario.com',
+  activo: true
+}
+db.Usuarios.deleteOne({nombre:"Luis Torres"})
+{
+  acknowledged: true,
+  deletedCount: 1
+}
+db.Usuarios.deleteMany({edad:{$lt:30}})
+{
+  acknowledged: true,
+  deletedCount: 1
+}
+db.createCollection('Productos')
+{ ok: 1 }
+db.Productos.insertMany([{nombre:"Cafetera",precio:70000,categoria:"Cocina"},
+{nombre:"Camisa",precio:35000,categoria:"Ropa"},
+{nombre:"Cortinas",precio:150000,categoria:"Hogar"},
+{nombre:"Celular",precio:950000,categoria:"Electrónica"},
+{nombre:"Cuaderno",precio:25000,categoria:"Papelería"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('68229291936992cbb6a985d1'),
+    '1': ObjectId('68229291936992cbb6a985d2'),
+    '2': ObjectId('68229291936992cbb6a985d3'),
+    '3': ObjectId('68229291936992cbb6a985d4'),
+    '4': ObjectId('68229291936992cbb6a985d5')
+  }
+}
+db.Productos.find({ precio: { $gt: 100000 } })
+{
+  _id: ObjectId('68229291936992cbb6a985d3'),
+  nombre: 'Cortinas',
+  precio: 150000,
+  categoria: 'Hogar'
+}
+{
+  _id: ObjectId('68229291936992cbb6a985d4'),
+  nombre: 'Celular',
+  precio: 950000,
+  categoria: 'Electrónica'
+}
+db.Productos.find().sort({ precio: -1 })
+{
+  _id: ObjectId('68229291936992cbb6a985d4'),
+  nombre: 'Celular',
+  precio: 950000,
+  categoria: 'Electrónica'
+}
+{
+  _id: ObjectId('68229291936992cbb6a985d3'),
+  nombre: 'Cortinas',
+  precio: 150000,
+  categoria: 'Hogar'
+}
+{
+  _id: ObjectId('68229291936992cbb6a985d1'),
+  nombre: 'Cafetera',
+  precio: 70000,
+  categoria: 'Cocina'
+}
+{
+  _id: ObjectId('68229291936992cbb6a985d2'),
+  nombre: 'Camisa',
+  precio: 35000,
+  categoria: 'Ropa'
+}
+{
+  _id: ObjectId('68229291936992cbb6a985d5'),
+  nombre: 'Cuaderno',
+  precio: 25000,
+  categoria: 'Papelería'
+}
+db.Productos.updateMany({},{$set:{en_stock: true } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 5,
+  modifiedCount: 5,
+  upsertedCount: 0
+}
+db.Productos.updateMany({ precio: { $gt: 500 } },{ $set: { en_stock: false } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 5,
+  modifiedCount: 5,
+  upsertedCount: 0
+}
+db.Productos.deleteMany({ precio: { $lt: 50000 } })
+{
+  acknowledged: true,
+  deletedCount: 2
+}
+db.productos.aggregate([{$group: {_id: "$categoria",precioPromedio: { $avg: "$precio" }}}])
+db.Productos.aggregate([{$group: {_id: "$categoria",precioPromedio: { $avg: "$precio" }}}])
+{
+  _id: 'Electrónica',
+  precioPromedio: 950000
+}
+{
+  _id: 'Hogar',
+  precioPromedio: 150000
+}
+{
+  _id: 'Cocina',
+  precioPromedio: 70000
+}
+db.Productos.aggregate([{
+    $group: {
+      _id: "$categoria",
+      precioPromedio: { $avg: "$precio" }
+    }
+  },
+  {
+    $sort: { precioPromedio: -1 }
+  },
+  {
+    $limit: 1}])
+{
+  _id: 'Electrónica',
+  precioPromedio: 950000
+}
+db.Productos.aggregate([{
+    $group: {
+      _id: "$categoria",
+      totalProductos: { $sum: 1 }}}])
+{
+  _id: 'Cocina',
+  totalProductos: 1
+}
+{
+  _id: 'Hogar',
+  totalProductos: 1
+}
+{
+  _id: 'Electrónica',
+  totalProductos: 1
+}
+ 
+db.Productos.find({nombre: { $regex: /Cafetera/i }})
+{
+  _id: ObjectId('68229291936992cbb6a985d1'),
+  nombre: 'Cafetera',
+  precio: 70000,
+  categoria: 'Cocina',
+  en_stock: false
+}
+ 
+
+
