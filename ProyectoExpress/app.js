@@ -33,8 +33,3 @@ app.use('api/items',itemRoutes);
 app.listen(PORT,()=>{
     console.log(`Servidor Conectado en http://localhost:${PORT}`);
 });
-
-app:AudioListener(port,()=>{
-    console.log(`Servidor conectado en http://localhost:${PORT}`);
-})
-
