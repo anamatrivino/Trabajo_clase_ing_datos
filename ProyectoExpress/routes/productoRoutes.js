@@ -18,9 +18,8 @@ try{
 
 router.get('/',async(req,res)=>{
 try{
-    const items=await 
-    Item.find();
-    res.json(item);
+    const items=await Item.find();
+    res.json(items);
 }catch(error){
     res.status(500).json({error:error.message});
 }

@@ -5,7 +5,7 @@ const mongoose=require('mongoose');
 const bodyParser=require('body-parser');
 const cors=require('cors');
 
-const itemRoutes=require('./routes/productoRoutes');
+const itemRoutes=require('./routes/productoRoutes.js');
 
 const app=express();
 const PORT=3000;
@@ -28,7 +28,7 @@ mongoose.connect('mongodb://localhost:27017/miapp',{
 
 //Rutas
 
-app.use('api/items',itemRoutes);
+app.use('/api/items', itemRoutes);
 
 app.listen(PORT,()=>{
     console.log(`Servidor Conectado en http://localhost:${PORT}`);
